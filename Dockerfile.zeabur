@@ -38,7 +38,7 @@ RUN for dir in /app/panda_common /app/panda_data /app/panda_data_hub /app/panda_
     done
 
 # Build all wheels in dependency order (mirrors Dockerfile.server)
-RUN cd /app/panda_common && python setup.py bdist_wheel && \
+RUN pip install --no-cache-dir setuptools wheel && cd /app/panda_common && python setup.py bdist_wheel && \
     cd /app/panda_data && python setup.py bdist_wheel && \
     cd /app/panda_data_hub && python setup.py bdist_wheel && \
     cd /app/panda_llm && python setup.py bdist_wheel && \
